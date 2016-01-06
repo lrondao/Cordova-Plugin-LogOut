@@ -60,7 +60,8 @@
         }
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URL_WEB_APPLICATION]]];
+        NSURL * url = self.webView.request.URL;
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[url absoluteString]]]];
     } else {
         // otherwise
     }
