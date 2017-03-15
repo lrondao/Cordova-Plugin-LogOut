@@ -10,10 +10,10 @@
 #import <Cordova/CDVPlugin.h>
 #import "OutSystemsAppDelegate.h"
 
-@interface LogOut : CDVPlugin
+@interface SilentLogin : CDVPlugin
 
 - (OutSystemsAppDelegate*)appDelegate;
-- (void)logOut:(CDVInvokedUrlCommand*)command;
+- (void)silentLogin:(CDVInvokedUrlCommand*)command;
 - (void)logOutWebView:(CDVInvokedUrlCommand*)command;
 
 @end
