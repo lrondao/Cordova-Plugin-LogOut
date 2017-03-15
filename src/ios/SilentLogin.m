@@ -7,11 +7,14 @@
 //  @author João Pereira Gonçalves (joao.goncalves@outsystems.com)
 //
 
-#import "LogOut.h"
+#import "SilentLogin.h"
 #import "ApplicationViewController.h"
 #import "OSNavigationController.h"
+#import "LoginScreenController.h"
+#import "OSNavigationController.h"
 
-@implementation LogOut
+
+@implementation SilentLogin
 
 - (OSNavigationController *) navigationController {
     if([self.appDelegate.window.rootViewController class] == [OSNavigationController class]){
@@ -20,17 +23,54 @@
     return nil;
 }
 
-- (void)logOut:(CDVInvokedUrlCommand *)command {
+- (void)silentLogin:(CDVInvokedUrlCommand *)command {
+    
+    /**
+    Infrastructure *infrastructure = [self fetchEnvironments];
     CDVPluginResult* pluginResult;
     if([self navigationController]) {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-        [[self navigationController] popViewControllerAnimated:YES];
+        
+        
+        UIStoryboard *storyboard = [self navigationController].storyboard;
+        
+        NSArray* tempVCA = [self.navigationController viewControllers];
+        BOOL hasLoginViewController = NO;
+        for(UIViewController *tempVC in tempVCA)
+        {
+            if([tempVC isKindOfClass:[LoginScreenController class]])
+            {
+                hasLoginViewController = YES;
+            }
+        }
+        if(hasLoginViewController) {
+            [[self navigationController] popViewControllerAnimated:YES];
+        } else {
+            // GoToSingleApplicationSegue
+            LoginScreenController *appViewController = [storyboard instantiateViewControllerWithIdentifier:@"SplashScreenDummy"];
+            appViewController.infrastructureReadonly = YES;
+            appViewController.loginReadonly = NO;
+            appViewController.infrastructure = infrastructure;
+            [[self navigationController] pushViewController:appViewController animated:YES];
+            
+            for(UIViewController *tempVC in tempVCA)
+            {
+                if([tempVC isKindOfClass:[ApplicationViewController class]])
+                {
+                    [tempVC removeFromParentViewController];
+                }
+            }
+        }
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
     
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];*/
+    
+    OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
+    [navigationController pushRootViewController:nil];
 }
+
 
 - (void)logOutWebView:(CDVInvokedUrlCommand *)command {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];

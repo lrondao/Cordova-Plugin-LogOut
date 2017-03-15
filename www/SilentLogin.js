@@ -4,11 +4,11 @@
 
 */
 
-function LogOut() {
+function SilentLogin() {
 }
 
-exports.logOut = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "LogOut", "logOut", []);
+exports.silentLogin = function (successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, "SilentLogin", "SilentLogin", []);
 };
 
 exports.logOutWebView = function (successCallback, errorCallback) {

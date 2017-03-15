@@ -4,14 +4,14 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
            id="com.os.mobile.logout"
       version="1.0.0">
-    <name>Log Out</name>
-    <description>Log Out Plugn for come back to the login screen</description>
+    <name>Silent Login</name>
+    <description>Initiates Silent Login</description>
     <license>Apache 2.0</license>
-    <keywords>cordova,outsystems, logout</keywords>
+    <keywords>cordova,outsystems, silent</keywords>
     <repo></repo>
     <issue></issue>
 
-    <js-module src="www/LogOut.js" name="LogOut">
+    <js-module src="www/SilentLogin.js" name="SilentLogin">
         <clobbers target="cordova.plugins.logOut" />
         <clobbers target="plugin.logOut" />
     </js-module>
@@ -19,29 +19,29 @@
     <!-- ios -->
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="LogOut">
-                <param name="ios-package" value="LogOut" />
+            <feature name="SilentLogin">
+                <param name="ios-package" value="SilentLogin" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
-        <header-file src="src/ios/LogOut.h" />
-        <source-file src="src/ios/LogOut.m" />
+        <header-file src="src/ios/SilentLogin.h" />
+        <source-file src="src/ios/SilentLogin.m" />
     </platform>
 
     <!-- Android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="LogOut">
-                <param name="android-package" value="com.os.mobile.logout.LogOut"/>
+                <param name="android-package" value="com.os.mobile.silentlogin.SilentLogin"/>
             </feature>
         </config-file>
 
-        <source-file src="src/android/LogOut.java" target-dir="src/com/os/mobile/logout" />
+        <source-file src="src/android/SilentLogin.java" target-dir="src/com/os/mobile/SilentLogin" />
     </platform>
 
     <!-- windows -->
     <platform name="windows">
-        <js-module src="src/windows/LogOutProxy.js" name="LogOutProxy">
+        <js-module src="src/windows/SilentLoginProxy.js" name="LogOutProxy">
             <merges target="" />
         </js-module>
     </platform>
