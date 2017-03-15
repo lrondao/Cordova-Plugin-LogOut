@@ -12,8 +12,8 @@
     <issue></issue>
 
     <js-module src="www/SilentLogin.js" name="SilentLogin">
-        <clobbers target="cordova.plugins.logOut" />
-        <clobbers target="plugin.logOut" />
+        <clobbers target="cordova.plugins.silentLogin" />
+        <clobbers target="plugin.silentLogin" />
     </js-module>
 
     <!-- ios -->
