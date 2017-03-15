@@ -2,7 +2,7 @@
 
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-           id="com.os.mobile.logout"
+           id="com.os.mobile.silentlogin"
       version="1.0.0">
     <name>Silent Login</name>
     <description>Initiates Silent Login</description>
