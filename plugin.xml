@@ -31,7 +31,7 @@
     <!-- Android -->
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="LogOut">
+            <feature name="SilentLogin">
                 <param name="android-package" value="com.os.mobile.silentlogin.SilentLogin"/>
             </feature>
         </config-file>
