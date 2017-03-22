@@ -24,63 +24,30 @@
 }
 
 - (void)silentLogin:(CDVInvokedUrlCommand *)command {
-    
-    /**
-    Infrastructure *infrastructure = [self fetchEnvironments];
     CDVPluginResult* pluginResult;
-    if([self navigationController]) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
+    if([self.appDelegate.window.rootViewController class] == [OSNavigationController class]){
+        OSNavigationController* osn = (OSNavigationController*) self.appDelegate.window.rootViewController;
+        [OutSystemsAppDelegate unsetAutoLoginPerformed];
+        [osn pushRootViewController:nil];
         
-        
-        UIStoryboard *storyboard = [self navigationController].storyboard;
-        
-        NSArray* tempVCA = [self.navigationController viewControllers];
-        BOOL hasLoginViewController = NO;
-        for(UIViewController *tempVC in tempVCA)
-        {
-            if([tempVC isKindOfClass:[LoginScreenController class]])
-            {
-                hasLoginViewController = YES;
-            }
-        }
-        if(hasLoginViewController) {
-            [[self navigationController] popViewControllerAnimated:YES];
-        } else {
-            // GoToSingleApplicationSegue
-            LoginScreenController *appViewController = [storyboard instantiateViewControllerWithIdentifier:@"SplashScreenDummy"];
-            appViewController.infrastructureReadonly = YES;
-            appViewController.loginReadonly = NO;
-            appViewController.infrastructure = infrastructure;
-            [[self navigationController] pushViewController:appViewController animated:YES];
-            
-            for(UIViewController *tempVC in tempVCA)
-            {
-                if([tempVC isKindOfClass:[ApplicationViewController class]])
-                {
-                    [tempVC removeFromParentViewController];
-                }
-            }
-        }
-    } else {
+    }
+    else{
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];*/
-    
-    OSNavigationController *navigationController = (OSNavigationController *)self.window.rootViewController;
-    [navigationController pushRootViewController:nil];
 }
 
 
 - (void)logOutWebView:(CDVInvokedUrlCommand *)command {
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign Off Verification"
-                                                    message:@"You're about to sign off. Are you sure?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Cancel"
-                          
-                                          otherButtonTitles:@"Yes", nil];
-    [alert show];
+    /**UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign Off Verification"
+     message:@"You're about to sign off. Are you sure?"
+     delegate:self
+     cancelButtonTitle:@"Cancel"
+     
+     otherButtonTitles:@"Yes", nil];
+     [alert show];*/
     
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }

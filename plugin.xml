@@ -41,7 +41,7 @@
 
     <!-- windows -->
     <platform name="windows">
-        <js-module src="src/windows/SilentLoginProxy.js" name="LogOutProxy">
+        <js-module src="src/windows/SilentLoginProxy.js" name="SilentLoginProxy">
             <merges target="" />
         </js-module>
     </platform>

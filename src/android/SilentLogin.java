@@ -1,4 +1,4 @@
-package com.os.mobile.logout;
+package com.os.mobile.silentlogin;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -16,24 +16,24 @@ import org.json.JSONArray;
  * @author Vítor Oliveira (vitor.oliveira@outsystems.com)
  * @author João Pereira Gonçalves (joao.goncalves@outsystems.com)
  */
-public class LogOut extends CordovaPlugin {
+public class SilentLogin extends CordovaPlugin {
 
-    private static final String LOG_OUT = "logOut";
+    private static final String SILENT_LOGIN = "silentLogin";
 
-    private static final String LOG_OUT_WEBVIEW = "logOutWebView";
+    private static final String SILENT_LOGIN_WEBVIEW = "silentLoginWebView";
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
 
-        if (action.equals(LOG_OUT)) {
-            logOut();
-        } else if (action.equals(LOG_OUT_WEBVIEW)) {
-            logoutWebView();
+        if (action.equals(SILENT_LOGIN)) {
+            silentLogin();
+        } else if (action.equals(SILENT_LOGIN_WEBVIEW)) {
+            silentLoginWebView();
         }
         return true;
     }
 
-    private void logOut() {
+    private void silentLogin() {
         cordova.getActivity().finish();
     }
 
