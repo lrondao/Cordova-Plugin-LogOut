@@ -36,34 +36,4 @@ public class SilentLogin extends CordovaPlugin {
     private void silentLogin() {
         cordova.getActivity().finish();
     }
-
-    private void logoutWebView() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(cordova.getActivity());
-        builder.setTitle("Sign Off Verification");
-        builder.setMessage("You're about to sign off. Are you sure?");
-
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-                LogOut.this.cordova.getActivity().runOnUiThread(new NamedRunnable("LogoutRunnable") {
-                    @Override
-                    protected void execute() {
-                        WebServicesClient.getInstance().getLoginCookies().clear();
-                        CookieManager.getInstance().removeAllCookie();
-                        LogOut.this.webView.loadUrl(webView.getUrl());
-                    }
-                });
-            }
-        });
-
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-
-        builder.show();
-    }
 }
