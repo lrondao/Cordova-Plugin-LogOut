@@ -14,6 +14,5 @@
 
 - (OutSystemsAppDelegate*)appDelegate;
 - (void)silentLogin:(CDVInvokedUrlCommand*)command;
-- (void)logOutWebView:(CDVInvokedUrlCommand*)command;
 
 @end

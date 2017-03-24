@@ -38,20 +38,6 @@
     
 }
 
-
-- (void)logOutWebView:(CDVInvokedUrlCommand *)command {
-    CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-    /**UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sign Off Verification"
-     message:@"You're about to sign off. Are you sure?"
-     delegate:self
-     cancelButtonTitle:@"Cancel"
-     
-     otherButtonTitles:@"Yes", nil];
-     [alert show];*/
-    
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-}
-
 - (OutSystemsAppDelegate *)appDelegate {
     return (OutSystemsAppDelegate*)[[UIApplication sharedApplication] delegate];
 }
