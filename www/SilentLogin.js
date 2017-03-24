@@ -8,5 +8,5 @@ function SilentLogin() {
 }
 
 exports.silentLogin = function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, "SilentLogin", "SilentLogin", []);
+    cordova.exec(successCallback, errorCallback, "SilentLogin", "silentLogin", []);
 };

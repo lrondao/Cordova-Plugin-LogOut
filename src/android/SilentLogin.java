@@ -20,8 +20,6 @@ public class SilentLogin extends CordovaPlugin {
 
     private static final String SILENT_LOGIN = "silentLogin";
 
-    private static final String SILENT_LOGIN_WEBVIEW = "silentLoginWebView";
-
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) {
 
@@ -34,6 +32,9 @@ public class SilentLogin extends CordovaPlugin {
     }
 
     private void silentLogin() {
-        cordova.getActivity().finish();
+        //if(!BuildConfig.DEV) {
+            Intent intent = new Intent(cordova.getActivity(), SplashScreen.class);
+            cordova.getActivity().startActivity(intent);
+        //}
     }
 }
